@@ -52,3 +52,5 @@ CNN包括卷积层、池化层（Maxpooling,AveragePooling）、ReLU（非线性
         	c4 = self.fc4(feat)
         	c5 = self.fc5(feat)
         	return c0, c1, c2, c3, c4, c5
+		
+该模型通过预测每个字符来预测所有字符，准确率有上限。可以考虑修改模型，包括修改loss函数的定义。尝试了在网络中增加一个全连接层预测每张图片上的字符位数，但训练比较困难，后续通过调参再试一下。
