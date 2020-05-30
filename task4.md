@@ -31,13 +31,13 @@
 		num_workers=10, 
 	)
 
-	model = SVHN_Model1()
-	criterion = nn.CrossEntropyLoss (size_average=False)   # CrossEntropy是LogSoftmax和NLLLoss的结合，适用于多分类问题 https://mfy.world/deep-learning/pytorch/pytorchnotes-lossfunc/
-	optimizer = torch.optim.Adam(model.parameters(), 0.001)  # 优化算法/ Adam相当于 RMSprop + Momentum https://www.cnblogs.com/guoyaohua/p/8542554.html
-	best_loss = 1000.0
+		model = SVHN_Model1()
+		criterion = nn.CrossEntropyLoss (size_average=False)   # CrossEntropy是LogSoftmax和NLLLoss的结合，适用于多分类问题 https://mfy.world/deep-learning/pytorch/pytorchnotes-lossfunc/
+		optimizer = torch.optim.Adam(model.parameters(), 0.001)  # 优化算法/ Adam相当于 RMSprop + Momentum https://www.cnblogs.com/guoyaohua/p/8542554.html
+		best_loss = 1000.0
 
-	for epoch in range(20):
-		print('Epoch: ', epoch)
+		for epoch in range(20):
+			print('Epoch: ', epoch)
 
 		train(train_loader, model, criterion, optimizer, epoch)
 		val_loss = validate(val_loader, model, criterion)
@@ -47,9 +47,9 @@
 			best_loss = val_loss
 			torch.save(model.state_dict(), './model.pt')
 			
-	def train(train_loader, model, criterion, optimizer, epoch):
-		# 切换模型为训练模式
-		model.train()
+		def train(train_loader, model, criterion, optimizer, epoch):
+			# 切换模型为训练模式
+			model.train()
 
 		for i, (input, target) in enumerate(train_loader):
 			c0, c1, c2, c3, c4, c5 = model(data[0])
@@ -64,10 +64,10 @@
 			loss.backward()
 			optimizer.step()
 			
-	def validate(val_loader, model, criterion):
-		# 切换模型为预测模型
-		model.eval()
-		val_loss = []
+		def validate(val_loader, model, criterion):
+			# 切换模型为预测模型
+			model.eval()
+			val_loss = []
 
 		# 不记录模型梯度信息
 		with torch.no_grad():
