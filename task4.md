@@ -17,19 +17,19 @@
 * 构造训练集和验证集；
 * 每轮进行训练和验证，并根据最优验证集精度保存模型。
 
-	train_loader = torch.utils.data.DataLoader(
-		train_dataset,
-		batch_size=10, 
-		shuffle=True, 
-		num_workers=10, 
-	)
+		train_loader = torch.utils.data.DataLoader(
+			train_dataset,
+			batch_size=10, 
+			shuffle=True, 
+			num_workers=10, 
+		)
 
-	val_loader = torch.utils.data.DataLoader(
-		val_dataset,
-		batch_size=10, 
-		shuffle=False, 
-		num_workers=10, 
-	)
+		val_loader = torch.utils.data.DataLoader(
+			val_dataset,
+			batch_size=10, 
+			shuffle=False, 
+			num_workers=10, 
+		)
 
 		model = SVHN_Model1()
 		criterion = nn.CrossEntropyLoss (size_average=False)   # CrossEntropy是LogSoftmax和NLLLoss的结合，适用于多分类问题 https://mfy.world/deep-learning/pytorch/pytorchnotes-lossfunc/
